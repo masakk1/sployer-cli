@@ -9,3 +9,5 @@ run.py
 notify.py
 .pytify-search-history
 venv/
+.venv/
+backup/
