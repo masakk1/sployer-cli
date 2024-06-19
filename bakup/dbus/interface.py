@@ -1,12 +1,16 @@
 from __future__ import absolute_import, unicode_literals
-import dbus
+import db
 import sys
+
+import dbus.interface
 
 
 class Interface():
     def factory(type):
+        session_bus = pythondbus.
+
         try:
-            interface = dbus.Interface(
+            interface = dbus.interface(
                 dbus.SessionBus().get_object(
                     'org.mpris.MediaPlayer2.spotify',
                     '/org/mpris/MediaPlayer2'
