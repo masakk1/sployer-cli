@@ -1,15 +1,9 @@
+"""
+    This py file allows to communicate with the backend
+"""
+
 import click
-from dbus_handler import DBusHandler
-
-dbus_handler = DBusHandler()
-
-
-def get_song_uri_at_index(self, index):
-    return str(self._songs[index]["href"])
-
-
-def get_song_name_at_index(self, index):
-    return str("%s - %s" % (self._songs[index]["artist"], self._songs[index]["song"]))
+import lib
 
 
 @click.group()
@@ -18,29 +12,40 @@ def cli():
 
 
 @cli.command()
-@click.argument("index", type=click.INT, required=True)
-def play_song(index):
-    dbus_handler.interface.OpenUri(get_song_uri_at_index(index))
+@click.argument("song_uri", type=click.STRING)
+# TODO: Change this for my own help article
+@click.help_option(
+    "-h",
+    "--help",
+    help="https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids",
+)
+def play_uri(song_uri):
+    lib.play_uri(song_uri)
 
 
 @cli.command()
 def skip_song():
-    dbus_handler.interface.Next()
+    lib.skip_song()
 
 
 @cli.command()
 def prev_song():
-    dbus_handler.interface.Previous()
+    lib.skip_song()
 
 
 @cli.command()
 def toggle_play():
-    dbus_handler.interface.PlayPause()
+    lib.toggle_play()
+
+
+@cli.command()
+def resume():
+    lib.resume()
 
 
 @cli.command()
 def pause():
-    dbus_handler.interface.Stop()
+    lib.pause()
 
 
 if __name__ == "__main__":

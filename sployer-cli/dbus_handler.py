@@ -4,33 +4,34 @@ import sys
 
 class DBusHandler:
     def __init__(self) -> None:
-        self._get_dbus_interface()
+        # Get the dbus proxy
 
-    def _get_dbus_interface(self) -> None:
-        """
-        Returns the dbus interface for spotify if it is running, otherwise exits
-        """
         self.session_bus = dbus.SessionBus()
 
+        self.interface = self.get_interface("org.mpris.MediaPlayer2.Player")
+        self.properties = self.get_interface("org.freedesktop.DBus.Properties")
+
+    def get_interface(self, interface):
         try:
             interface = dbus.Interface(
                 self.session_bus.get_object(
                     "org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2"
                 ),
-                "org.mpris.MediaPlayer2.Player",
+                interface,
             )
         except dbus.exceptions.DBusException:
             # If we catch this exception, Spotify is not running.
             sys.exit(
-                "\nSome errors occured. Try restart or start Spotify. Pytify is just a cli application which controls Spotify. So you can't use Pytify without Spotify.\n"
+                "\nSpotify was not found. Try restarting/opening it. This program requires Spotify APPLICATION open.\n"
             )
-        self.interface = interface
+
+        return interface
 
     def _get_metadata(self):
         """
         Update the `self.metadate` variable
         """
-        self.metadata = self.interface.Get("org.mpris.MediaPlayer2.Player", "Metadata")
+        self.metadata = self.properties.Get("org.mpris.MediaPlayer2.Player", "Metadata")
 
     def get_current_playing(self):
         """
