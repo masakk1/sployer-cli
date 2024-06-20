@@ -1,13 +1,8 @@
 build/
-*.pyc
-.idea/*
-*.swp
-*.swu
 dist/
-pytify.egg-info/
-run.py
-notify.py
+spotzero.egg-info
 .pytify-search-history
 venv/
 .venv/
-backup/
+.backup/
+**/__pycache__/

@@ -1,7 +1,4 @@
-import spotipy
-import dbus
-from spotipy.oauth2 import SpotifyOAuth
-from dbus_handler import DBusHandler
+from spotzero.dbus_handler import DBusHandler
 
 dbus_handler = DBusHandler()
 

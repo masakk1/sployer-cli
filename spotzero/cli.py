@@ -3,7 +3,7 @@
 """
 
 import click
-import linux as lib
+from spotzero.linux import Linux as lib
 
 # import spotipy
 
@@ -70,6 +70,6 @@ def set_volume(value: float):
     lib.set_volume(value)
 
 
-if __name__ == "__main__":
-    cli = click.CommandCollection(click.Group("cli"), [cli])
-    cli()
+# if __name__ == "__main__":
+#     cli = click.CommandCollection(click.Group("cli"), [cli])
+#     cli()
