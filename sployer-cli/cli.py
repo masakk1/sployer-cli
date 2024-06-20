@@ -3,7 +3,18 @@
 """
 
 import click
-import lib
+import linux as lib
+
+# import spotipy
+
+# -- Currently commented because I don't have a use for it yet --
+# Connect to the SpotifyAPI
+# scope = "playlist-modify-private playlist-modify-public playlist-read-private playlist-read-collaborative playlist-read-private playlist-read-collaborative user-library-modify user-library-read"
+# sp_api: spotipy.Spotify = None
+# def connect_to_spotify():
+#     global sp_api
+#     sp_api = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+#     print("Connected to Spotify")
 
 
 @click.group()
