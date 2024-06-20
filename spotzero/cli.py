@@ -30,14 +30,14 @@ def play_uri(song_uri):
 
 
 @cli.command()
-def skip_song():
+def skip():
     lib.skip_song()
 
 
 @cli.command()
-def prev_song():
+def prev():
     """Goes back to time 0 or previous song. Blame spotify not me"""
-    lib.skip_song()
+    lib.prev_song()
 
 
 @cli.command()
