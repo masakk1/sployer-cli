@@ -1,4 +1,5 @@
 import spotipy
+import dbus
 from spotipy.oauth2 import SpotifyOAuth
 from dbus_handler import DBusHandler
 
@@ -45,3 +46,12 @@ def resume():
 
 def pause():
     dbus_handler.interface.Stop()
+
+
+def set_volume(value: float):
+    dbus_handler.set_property("Volume", value)
+
+
+def change_volume(amount: float):
+    current_volume = dbus_handler.get_property("Volume")
+    dbus_handler.set_property("Volume", current_volume + amount)
