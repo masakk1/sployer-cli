@@ -10,7 +10,7 @@ setup(
     install_requires=["dbus-python==1.3.2", "click>=8.1"],
     description="control the spotify app with a cli or with a package",
     long_description=long_description,
-    long_description_content_type='text/markdown'
+    long_description_content_type='text/markdown',
     entry_points={
         "console_scripts": [
             "spotzero = spotzero.cli:cli",
