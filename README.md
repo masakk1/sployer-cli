@@ -14,14 +14,42 @@ pip install spotzero
 ```
 
 ## From source
-If you want to install from source
+If you want to install from source you'll need some packages beacuse `dbus-python` requires it.
+There are 2 methods from source:
+1. Using the `--editable` flatg
+2. Building it with `python -m build` and then installing it `pip install dist/spotzero-<latest_version>-py3-none-any.whl`
+
+### 1. Installing dependencies for Distros
+#### Ubuntu
+```bash
+apt install pip, git, meson, pkg-config, libdbus-1-dev, libglib2.0-dev
+```
+> add sudo as needed.
+
+### 2. Cloning the repo
 ```bash
 git clone https://github.com/masakk1/spotzero.git
 cd spotzero
-pip install .
 ```
-> [!tip] Do you want to change the code?
-> Then add a --editable flag when installing with pip
+### 3.A Installing for regular use (RECOMMENDED)
+Install this way if you're only interested in using the program and not editing the source code.
+```bash
+pip install build # Make sure build is installed
+python -m build . # Compile
+pip install dist/spotzero-<LATEST_VERSION>-py3-none-any.whl
+```
+
+### 3.B Installing to edit the source code
+Only do this if you want to contribute or edit the source code.
+Once you move the foler, *spotzero* will not work anymore.
+The reason why I use `--editable` is because in many distros `pip install .` doesn't work.
+```bash
+# You should probably make a venv first.
+python -m venv . # or make a venv with your IDE of choice (RECOMMENDED).
+                 # you might need to install python3.10-venv whatever your distro
+                 # complains with
+pip install --editable .
+```
 
 # Usage
 ## From the terminal - CLI
