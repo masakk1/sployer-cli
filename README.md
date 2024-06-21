@@ -20,11 +20,17 @@ There are 2 methods from source:
 2. Building it with `python -m build` and then installing it `pip install dist/spotzero-<latest_version>-py3-none-any.whl`
 
 ### 1. Installing dependencies for Distros
+#### Every distro
+For some reason meson sometimes installs a previous version.
+```bash
+pip install meson --upgrade
+```
+
 #### Ubuntu
 ```bash
 apt install pip, git, meson, pkg-config, libdbus-1-dev, libglib2.0-dev
 ```
-> add sudo as needed.
+> add sudo as needed here.
 
 ### 2. Cloning the repo
 ```bash
