@@ -6,7 +6,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="spotzero",
-    version="0.1.0",
+    version="0.1.1",
     install_requires=["dbus-python==1.3.2", "click>=8.1"],
     description="control the spotify app with a cli or with a package",
     long_description=long_description,
